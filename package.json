@@ -1,0 +1,38 @@
+{
+  "name": "form_backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "babel-node server",
+    "migrate": "npx prisma migrate dev --preview-feature",
+    "studio": "npx prisma studio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunjin1012/form_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyunjin1012/form_backend/issues"
+  },
+  "homepage": "https://github.com/hyunjin1012/form_backend#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "prisma": "^4.5.0"
+  },
+  "dependencies": {
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/merge": "^8.3.11",
+    "@graphql-tools/schema": "^9.0.9",
+    "@prisma/client": "^4.5.0",
+    "apollo-server": "^3.11.1",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
