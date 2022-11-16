@@ -10,8 +10,7 @@ export default {
       if (!user) {
         return {
           ok: false,
-          error:
-            "We don't have your email address in our system. Want to sign up instead?",
+          error: "User not found. Want to sign up?",
         };
       }
       // check password with args.password
@@ -19,7 +18,7 @@ export default {
       if (!passwordOk) {
         return {
           ok: false,
-          error: "That's not your password. Please try again.",
+          error: "Incorrect PW. Try again.",
         };
       }
       // issue a token and send it to the user

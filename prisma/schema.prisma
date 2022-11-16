@@ -12,48 +12,46 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   password  String
   name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  surveys   Survey[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Post[]
+  comments  Comment[]
+  likes     Like[]
 }
 
-model Survey {
-  id        Int        @id @default(autoincrement())
+model Post {
+  id        Int       @id @default(autoincrement())
   title     String?
   content   String?
-  author    User       @relation(fields: [authorId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
   authorId  Int
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  Question  Question[]
-  Response  Response[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  comments  Comment[]
+  likes     Like[]
 }
 
-model Question {
-  id       Int      @id @default(autoincrement())
-  content  String?
-  survey   Survey   @relation(fields: [surveyId], references: [id])
-  surveyId Int
-  Option   Option[]
-}
-
-model Option {
-  id         Int        @id @default(autoincrement())
-  content    String?
-  question   Question   @relation(fields: [questionId], references: [id])
-  Response   Response[]
-  questionId Int
-}
-
-model Response {
+model Comment {
   id        Int      @id @default(autoincrement())
-  survey    Survey   @relation(fields: [surveyId], references: [id])
-  surveyId  Int
+  content   String?
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Option    Option[]
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

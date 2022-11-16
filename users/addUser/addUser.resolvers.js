@@ -9,8 +9,7 @@ export default {
       if (existingUser) {
         return {
           ok: false,
-          error:
-            "We already have your email address in our system. Want to log in instead?",
+          error: "Duplicate email. Try logging in?",
         };
       }
       // hash password

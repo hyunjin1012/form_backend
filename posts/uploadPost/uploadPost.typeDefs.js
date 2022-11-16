@@ -1,11 +1,12 @@
 import { gql } from "apollo-server";
 
 export default gql`
-  type changePWResult {
+  type UploadPostResult {
     ok: Boolean!
+    post: Post
     error: String
   }
   type Mutation {
-    changePW(password: String!): changePWResult!
+    uploadPost(title: String, content: String): UploadPostResult!
   }
 `;
